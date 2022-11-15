@@ -73,7 +73,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -85,7 +85,20 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+      $postupdate = $request->all();
+        $post->update($postupdate);
+        $slug = Str::slug($post->title);
+        $slug_base = $slug;
+        $existingslug = Post::where('slug', $slug)->first();
+        $counter = 1;
+        while ($existingslug) {
+            $slug = $slug_base . '_' . $counter;
+            $existingslug = Post::where('slug', $slug)->first();
+            $counter++;
+        }
+        $post->slug = $slug;
+        $post->save();
+        return redirect()->route('admin.posts.index');
     }
 
     /**
