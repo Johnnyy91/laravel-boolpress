@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -34,9 +35,23 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request , Post $post)
     {
-        //
+        return $datas = $request->all();
+        $newpost = new Post();
+        $newpost->fill($datas);
+        $slug = Str::slug($newpost->title);
+        $slug_base = $slug;
+        $existingslug = Post::where('slug', $slug)->first();
+        $counter = 1;
+        while ($existingslug) {
+            $slug = $slug_base . '_' . $counter;
+            $existingslug = Post::where('slug', $slug)->first();
+            $counter++;
+        }
+        $newpost->slug = $slug;
+        $newpost->save();
+        return redirect()->route('admin.posts.index');
     }
 
     /**
