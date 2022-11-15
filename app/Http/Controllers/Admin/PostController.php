@@ -37,7 +37,7 @@ class PostController extends Controller
      */
     public function store(Request $request , Post $post)
     {
-        return $datas = $request->all();
+        $datas = $request->all();
         $newpost = new Post();
         $newpost->fill($datas);
         $slug = Str::slug($newpost->title);
@@ -96,6 +96,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('admin.posts.index');
     }
 }
