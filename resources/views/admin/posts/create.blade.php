@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <form action="{{route('admin.posts.store')}}" method="POST">
+    <form class="d-flex flex-column" action="{{route('admin.posts.store')}}" method="POST">
         @csrf
         <label class="" for="title">Titolo:</label>
         <input class="p-2" type="text" name="title" value='{{ old('title', '') }}'
