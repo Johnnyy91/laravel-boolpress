@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>ciao</p>
     <ListPostComponent />
   </div>
 </template>
