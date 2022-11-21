@@ -1909,7 +1909,20 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'ListPostComponent'
+  name: 'ListPostComponent',
+  data: function data() {
+    return {
+      posts: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+    //console.log('ciao sono dentro mounted')
+    axios.get('/api/posts').then(function (response) {
+      console.log(response);
+      _this.posts = response.data;
+    });
+  }
 });
 
 /***/ }),
@@ -1948,7 +1961,11 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_vm._v("ciao sono la lista componenti")]);
+  return _c("div", [_c("ol", _vm._l(_vm.posts, function (post) {
+    return _c("li", {
+      key: post.id
+    }, [_vm._v(_vm._s(post.title))]);
+  }), 0)]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -49712,7 +49729,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

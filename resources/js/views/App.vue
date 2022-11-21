@@ -13,7 +13,9 @@ export default {
     name:'App',
     components: {
         ListPostComponent
-    }
+    },
+
+
 }
 </script>
 
