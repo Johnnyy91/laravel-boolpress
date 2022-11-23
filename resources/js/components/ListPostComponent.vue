@@ -1,7 +1,10 @@
 <template>
   <div>
     <ol>
-        <li v-for='post in posts' :key="post.id">{{post.title}}</li>
+        <li v-for='post in posts' :key="post.id">
+            {{post.title}}
+            <button @click="takeId(post.id)">Details</button>
+        </li>
     </ol>
   </div>
 </template>
@@ -21,7 +24,13 @@ export default {
             console.log(response);
             this.posts= response.data
         })
+    },
+    methods:{
+        takeId(id){
+            this.$router.push('/posts/'+ id)
+        }
     }
+
 }
 </script>
 
