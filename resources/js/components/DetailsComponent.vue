@@ -20,7 +20,6 @@ export default {
                 console.log(response)
                 this.post=response.data
             })
-
         }
     },
     mounted(){
