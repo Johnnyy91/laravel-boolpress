@@ -1938,7 +1938,18 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
-  components: {}
+  components: {},
+  data: function data() {
+    return {
+      NavbarLinks: [{
+        path: '/',
+        name: 'Home'
+      }, {
+        path: '/posts',
+        name: 'Blog'
+      }]
+    };
+  }
 });
 
 /***/ }),
@@ -1983,7 +1994,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("p", [_vm._v("ciao")]), _vm._v(" "), _c("router-view")], 1);
+  return _c("div", [_c("router-view")], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -52897,6 +52908,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
+
+
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -52917,14 +52931,13 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('ListComponent', __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module './components/ListComponent.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))["default"]);
+Vue.component('ListPostComponent', __webpack_require__(/*! ./components/ListPostComponent.vue */ "./resources/js/components/ListPostComponent.vue")["default"]);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
 
 var app = new Vue({
   el: '#root',
@@ -52952,11 +52965,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(router);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: [{
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: _components_ListPostComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
   }]
 });

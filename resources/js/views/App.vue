@@ -1,9 +1,7 @@
 <template>
   <div>
-    <p>ciao</p>
-    <router-view>
 
-    </router-view>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -16,6 +14,22 @@ export default {
     components: {
 
     },
+    data(){
+        return{
+            NavbarLinks: [
+                {
+                    path:'/',
+                    name:'Home'
+                },
+                {
+                    path: '/posts',
+                    name: 'Blog'
+                },
+
+            ]
+
+        }
+    }
 
 
 }
