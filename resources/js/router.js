@@ -5,7 +5,9 @@ import ListPostComponent from './components/ListPostComponent';
 Vue.use(VueRouter);
 const router = new VueRouter({
     routes:[{
-        path:'/', name:'home', component:ListPostComponent
+        path:'/posts',
+        name:'Listposts',
+        component:ListPostComponent
     }]
 })
 
